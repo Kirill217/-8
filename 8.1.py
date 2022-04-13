@@ -21,4 +21,10 @@ def correct_email(email):
 
     return
 
-correct_email('krill217sulimov@gmail.com')
+correct_email('kirill217sulimov@gmail.com')
+correct_email('kirill/sulimov@gmail.com')
+correct_email('кirill.sulimov@gmail.com')
+correct_email('kirill217sulimov@gma!l.com')
+correct_email('kiril1sulimov@gmail.com')
+correct_email('kirill217sulimov@gmailcom')
+correct_email('kirill217sulimov@gmail.c0m')
