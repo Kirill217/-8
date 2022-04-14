@@ -10,21 +10,44 @@ import re
 # print(RE_NAME.match(email_name))
 
 # name_email = input('Введите email: ')
+dict_username_domain = {}
 
 def correct_email(email):
-    pattern = r'^[a-z,A-Z,0-9,\.,\_]+@[a-z]+\.[a-z]+$'
-    RE_NAME = re.compile(pattern)
-    if RE_NAME.match(email) is None:
-        print('ValueError: wrong email:', email)
+    pattern = r'^[a-z,A-Z,0-9,\.,\_,\-]+@[a-z]+\.[a-z]+$'
+    # pattern_2 = r'^[a-z,A-Z,0-9,\.,\_,\-]+$'
+    # pattern_3 = r'^@+[a-z,A-Z,0-9,\.,\_,\-]+$'
+    name_email = re.compile(pattern)
+    # username = re.compile(pattern_2)
+    # domsin = re.compile(pattern_3)
+    if name_email.match(email) is None:
+        # raise ValueError
+        msg = f'wrong email {email}'
+        raise ValueError(msg)
+        # print(f'ValueError: wrong email: {email}')
+        # raise ValueError(msg)
+        # msg = f'Error {email}'
     else:
-        print('Ваш email:', email)
+        username = email.partition('@')[0]
+        # print(username)
+        domain = email[email.find("@") + 1:]
+        # print(domain)
+        dict_username_domain['username'] = username
+        dict_username_domain['domain'] = domain
+        print(dict_username_domain)
+        # username.match(email)
+        # domsin.match(email)
+        # print(email)
+
+        # print('Ваш email:', email)
 
     return
 
+
 correct_email('kirill217sulimov@gmail.com')
-correct_email('kirill/sulimov@gmail.com')
-correct_email('кirill.sulimov@gmail.com')
-correct_email('kirill217sulimov@gma!l.com')
-correct_email('kiril1sulimov@gmail.com')
-correct_email('kirill217sulimov@gmailcom')
+correct_email('kirill-sulimov@gmail.com')
+correct_email('_irill.sulimov@gmail.com')
+# correct_email('kirill217sulimov@gma!l.com')
+# correct_email('kiril1sulimov@gmail.com')
+# correct_email('kirill217sulimov@gmailcom')
 correct_email('kirill217sulimov@gmail.c0m')
+# correct_email('kirill-sulimov@gmail.com')
